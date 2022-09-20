@@ -1,0 +1,48 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+{% include "header.html" %}
+ <div class="container list-page">
+     {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+           <p>{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+     <h2 class="next-task">Enter Next Task</h2>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+                  {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+
+      </div>
+    </div>
+  </div>
+<div class = "my-list">
+    <h3 class="list-title">My list</h3>
+<form action="{{url_for('delete')}}" method = "post">
+<ul class="list-group list group numbered">
+    {% for item in items %}
+  <li class="list-group-item">
+    <input type="checkbox" class="form-check-input me-1" name="checked" value="{{item.item}}"  id="{{item.id}}CheckboxStretched">
+    <label class="form-check-label" for="{{item.id}}CheckboxStretched">{{item.item}}</label>
+      <small class="d-block text-muted">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+</svg>
+          {% if item.due_date == None %}
+          No due date
+          {% else %}
+          {{item.due_date}}
+          {% endif %}
+      </small>
+  </li>
+{% endfor %}
+</ul>
+    <input type="submit" class="btn btn-danger" value="Delete checked items">
+</form>
+    <p class="save-list">
+        <a href= "{{url_for('save_list')}}" type="button" class="btn btn-success ">Save List</a>
+</p>
+    </div>
+{% include "footer.html" %}
+{% endblock %}

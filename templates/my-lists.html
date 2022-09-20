@@ -1,0 +1,19 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+{% include "header.html" %}
+
+<div class="user-lists container">
+    <div class="row">
+        <h2>{{current_user.name}}'s Lists</h2>
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for list in current_user.lists %}
+           <a href="{{ url_for('edit_list', list_id=list.id) }}">{{list.date}}</a>
+          <a href="{{ url_for('user_delete', list_id=list.id) }}">❌</a>
+
+          <p> </p>
+          {% endfor %}
+      </div>
+        </div>
+    </div>
+{% include "footer.html" %}
+{% endblock %}

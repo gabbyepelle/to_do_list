@@ -1,0 +1,57 @@
+body{
+font-family: "Montserrat";
+}
+
+
+h2{
+text-align: center;
+}
+
+.nav-item{
+font-weight: bold;
+}
+
+.container{
+padding-top: 20px;
+}
+
+.list page{
+text-align: center;
+}
+
+.form-control{
+margin-bottom: 7px;
+}
+
+.my-list{
+padding-top: 20px;
+}
+
+.list-title{
+text-align: center;
+}
+
+.form-check-input:checked+ label{
+text-decoration:line-through
+}
+
+.btn-danger{
+margin: 15px
+}
+
+.next-task{
+padding-top: 15px;
+}
+
+.list-page{
+padding-top: 0px;
+}
+
+.save-list{
+text-align: center;
+margin-top: 7px;
+}
+
+.user-lists{
+text-align: center;
+}

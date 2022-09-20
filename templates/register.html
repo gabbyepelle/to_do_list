@@ -1,0 +1,26 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+{% include "header.html" %}
+  
+  <!-- Page Header -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h2>Register to save your lists</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container register">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+      </div>
+    </div>
+  </div>
+  
+{% include "footer.html" %}
+{% endblock %}
